@@ -5,7 +5,7 @@
 # MySQL synthese password : synthese
 # root password : toto
 
-FROM opensuse12-distcc
+FROM nahili/opensuse12-distcc
 MAINTAINER Bastien Noverraz (TL)
 
 # Install necessary librairies
