@@ -1,15 +1,12 @@
 # Builds an OpenSuse 12 based docker with a fully working Synthese server using MySQL
 # Dev tools installed
 
-# MySQL root password : root
+# MySQL root password : synthese_root
 # MySQL synthese password : synthese
 # root password : toto
 
 FROM opensuse12-distcc
 MAINTAINER Bastien Noverraz (TL)
-
-# To use the host proxy
-ENV http_proxy http://172.17.42.1:3128
 
 # Install necessary librairies
 RUN \
@@ -43,11 +40,6 @@ RUN \
 	make -j$(distcc -j) && \
 	make install && \
 	rm -rf /opt/subversion-1.8.10
-
-# SYNTHESE core installation
-RUN \
-	wget http://synthia-dev.t-l.ch/~jenkins/synthese/lin/release/trunk/latest/synthese.tar.bz2 -O /tmp/synthese.tar.bz2 && \
-	tar jxf /tmp/synthese.tar.bz2 -C /opt/
 
 # Set rights
 RUN \
